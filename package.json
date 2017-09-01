@@ -1,0 +1,25 @@
+{
+  "name": "react-android",
+  "version": "1.0.0",
+  "description": "react native communicate",
+  "main": "index.android.js",
+  "scripts": {
+    "test": "no",
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "keywords": [
+    "no"
+  ],
+  "author": "miaorenjie",
+  "license": "ISC",
+  "dependencies": {
+    "as": "^0.4.1",
+    "react": "^16.0.0-alpha.12",
+    "react-native": "^0.47.2",
+    "root": "^3.1.0"
+  }
+}

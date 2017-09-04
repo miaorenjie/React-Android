@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
-    private final String BUNDLE_URL="https://raw.githubusercontent.com/miaorenjie/React-Android/master/app/src/main/assets/index.android.bundle";
+    private final String BUNDLE_URL="https://raw.githubusercontent.com/miaorenjie/React-Android/master/bundle/index.android.bundle";
 
     private BroadcastReceiver receiver=new BroadcastReceiver() {
         @Override
@@ -40,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         Log.e("asd",file.getAbsolutePath());
         MimeTypeMap mimeTypeMap=MimeTypeMap.getSingleton();
         String mimeString=mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(BUNDLE_URL));
-
+       // getAssets().openFd()
         request.setMimeType(mimeString);
         request.setShowRunningNotification(true);
         request.setVisibleInDownloadsUi(true);
-        request.setTitle("asd");
-      //  long id=downloadManager.enqueue(request);
+        //request.setTitle("asd");
+        long id=downloadManager.enqueue(request);
 
         registerReceiver(receiver,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {

@@ -69,7 +69,7 @@ export default class ReactDemo extends Component {
            return (
 
                <View style={{paddingBottom:55}}>
-                   <Text onPress={this.changeListViewData.bind(this)} style={{fontSize:50}}> qqqqqdsaaqqaaaq </Text>
+                   <Text onPress={this.changeListViewData.bind(this)} style={{fontSize:50}}> 111 </Text>
 
                </View>
            );

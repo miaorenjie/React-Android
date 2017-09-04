@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  */
 
 public class MainApplication extends Application implements ReactApplication {
-
+    CommnPackage commnPackage=new CommnPackage();
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Nullable
         @Override
@@ -38,7 +38,8 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
-                    new MainReactPackage()
+                    new MainReactPackage(),
+                    commnPackage
             );
         }
 

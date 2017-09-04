@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
         request.setAllowedOverRoaming(false);
         request.setDestinationInExternalPublicDir("/asd/","android.bundle");
-        File file=Environment.getExternalStoragePublicDirectory("/asd/");
+        File file=Environment.getExternalStoragePublicDirectory("/asd/android.bundle");
+        if (file.exists())
+            file.delete();
         Log.e("asd",file.getAbsolutePath());
         MimeTypeMap mimeTypeMap=MimeTypeMap.getSingleton();
         String mimeString=mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(BUNDLE_URL));

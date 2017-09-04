@@ -2,6 +2,7 @@ package miaojie.example.com.react_android;
 
 import android.app.Application;
 import android.app.DownloadManager;
+import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -24,7 +25,9 @@ public class MainApplication extends Application implements ReactApplication {
         @Nullable
         @Override
         protected String getJSBundleFile() {
-            return super.getJSBundleFile();
+//            Log.e("asd",super.getJSBundleFile()+"sad");
+//            return super.getJSBundleFile();
+            return "/storage/emulated/0/asd/android.bundle";
         }
 
         @Override

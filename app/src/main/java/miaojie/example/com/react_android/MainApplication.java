@@ -20,14 +20,15 @@ import javax.annotation.Nullable;
  */
 
 public class MainApplication extends Application implements ReactApplication {
-    CommnPackage commnPackage=new CommnPackage();
+    private static final CommnPackage commnPackage=new CommnPackage();
+    private static MainApplication instance;
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Nullable
         @Override
         protected String getJSBundleFile() {
 //            Log.e("asd",super.getJSBundleFile()+"sad");
-//            return super.getJSBundleFile();
-            return "/storage/emulated/0/asd/android.bundle";
+            return super.getJSBundleFile();
+//            return "/storage/emulated/0/asd/android.bundle";
         }
 
         @Override
@@ -54,6 +55,15 @@ public class MainApplication extends Application implements ReactApplication {
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this,false);
+        instance=this;
+    }
 
+    public static CommnPackage getCommnPackage() {
+        return commnPackage;
+    }
+
+    public static MainApplication getInstance()
+    {
+        return instance;
     }
 }

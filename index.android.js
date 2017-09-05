@@ -8,7 +8,9 @@ import {
     TouchableHighlight,
     TouchableOpacity,
     AppRegistry,
-    NativeModules
+    ToastAndroid,
+    NativeModules,
+    DeviceEventEmitter
 } from 'react-native';
 
 export default class ReactDemo extends Component {
@@ -16,16 +18,34 @@ export default class ReactDemo extends Component {
    constructor(props) {
            super(props);
 
-       }
+   }
+
+   componentDidMount()
+   {
+       DeviceEventEmitter.addListener('qqq',(str)=>{
+           ToastAndroid.show(str,ToastAndroid.SHORT);
+            console.log(str);
+       })
+
+   }
     skipNativeCall()
     {
-        NativeModules.CommnMoudle.rnCallNative('15332411286');
+        NativeModules.commModule.rnCallNative('15332411286');
+    }
+
+    promiseCall()
+    {
+        NativeModules.commModule.callPromise('qqq').then((aaa)=>{
+            ToastAndroid.show(aaa,ToastAndroid.SHORT);
+
+
+        });
     }
        render() {
            return (
 
                <View style={{paddingBottom:55}}>
-                   <Text onPress={this.skipNativeCall.bind(this)} style={{fontSize:50}}> qwe </Text>
+                   <Text onPress={this.promiseCall.bind(this)} style={{fontSize:50}}> qwe </Text>
 
                </View>
            );

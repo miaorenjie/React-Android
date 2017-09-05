@@ -32,29 +32,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DownloadManager downloadManager= (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        DownloadManager.Request request=new DownloadManager.Request(Uri.parse(BUNDLE_URL));
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-        request.setAllowedOverRoaming(false);
-        request.setDestinationInExternalPublicDir("/asd/","android.bundle");
-        File file=Environment.getExternalStoragePublicDirectory("/asd/android.bundle");
-        if (file.exists())
-            file.delete();
-        Log.e("asd",file.getAbsolutePath());
-        MimeTypeMap mimeTypeMap=MimeTypeMap.getSingleton();
-        String mimeString=mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(BUNDLE_URL));
-       // getAssets().openFd()
-        request.setMimeType(mimeString);
-        request.setShowRunningNotification(true);
-        request.setVisibleInDownloadsUi(true);
-        //request.setTitle("asd");
-        long id=downloadManager.enqueue(request);
+//        DownloadManager downloadManager= (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//        DownloadManager.Request request=new DownloadManager.Request(Uri.parse(BUNDLE_URL));
+//        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+//        request.setAllowedOverRoaming(false);
+//        request.setDestinationInExternalPublicDir("/asd/","android.bundle");
+//        File file=Environment.getExternalStoragePublicDirectory("/asd/android.bundle");
+//        if (file.exists())
+//            file.delete();
+//        Log.e("asd",file.getAbsolutePath());
+//        MimeTypeMap mimeTypeMap=MimeTypeMap.getSingleton();
+//        String mimeString=mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(BUNDLE_URL));
+//       // getAssets().openFd()
+//        request.setMimeType(mimeString);
+//        request.setShowRunningNotification(true);
+//        request.setVisibleInDownloadsUi(true);
+//        //request.setTitle("asd");
+//        long id=downloadManager.enqueue(request);
 
         registerReceiver(receiver,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                MainApplication.getCommnPackage().commnModule.androidCallRn("asd");
                 startActivity(new Intent(MainActivity.this,MyReactActivity.class));
+            }
+        });
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainApplication.getCommnPackage().commnModule.androidCallRn("asd");
             }
         });
     }
